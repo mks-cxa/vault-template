@@ -103,7 +103,15 @@ The laptop needs three things: Git (the program that talks to GitHub), your vaul
 1. Install Obsidian from https://obsidian.md.
 2. Start it, choose **Open folder as vault** and select the folder from 5.2.
 3. Obsidian asks whether to trust the vault's plugins: choose **Trust author and enable plugins**.
-4. **Settings** (gear, bottom left), **Community plugins**, **Browse**, search **Git** (by Vinzent), **Install**, then **Enable**. The settings come with the template: it fetches changes every minute and uploads your edits 2 minutes after you stop typing.
+4. **Settings** (gear, bottom left), **Community plugins**, **Browse**, search **Git** (by Vinzent), **Install**, then **Enable**. Then open **Settings**, **Git** and set these values by hand. Since Obsidian 1.15 the template's settings are not applied: installing the plugin renames the template's `data.json` to `data.json.bak` and starts with defaults.
+   - **Split timers for automatic commit and sync:** off
+   - **Auto commit-and-sync interval (minutes):** `2`
+   - **Auto commit-and-sync after stopping file edits:** on
+   - **Auto pull interval (minutes):** `1`
+   - **Pull on startup:** on
+   - **Merge strategy:** Merge
+
+   It then fetches changes every minute and uploads your edits 2 minutes after you stop typing.
 5. Recommended: **Settings**, **Core plugins**, turn on **Bases** (gives you the project and roadmap overviews).
 6. First sync test: press Cmd+P (Mac) or Ctrl+P (Windows), type **Git: Commit-and-sync**, Enter. The first time, a browser window may ask you to sign in to GitHub: do it. Afterwards there should be no red error notice.
 
@@ -149,9 +157,9 @@ https://vault-mcp-551091705251.europe-west6.run.app/mcp
 **8.1 Add the connector (once, on the web)**
 
 1. Open https://claude.ai, **Settings**, **Connectors**, **Add custom connector**.
-2. Name: `Vault MCP`. URL: the connector URL above. **Add**, then **Connect**, and sign in with GitHub.
+2. Name: `Vault MCP`. URL: the connector URL above. The dialog may also show **Authentication** and **OAuth client** options; leave the detected defaults. **Add**, then **Connect**, and sign in with GitHub.
 3. If your Claude account belongs to a Team or Enterprise organisation and you cannot add connectors, ask the organisation owner to add the connector first; you then only click **Connect**.
-4. Recommended tool permissions (Settings, Connectors, Vault MCP): reading tools "Always allow"; `idea_add`, `inbox_append`, `note_write` "Always allow"; `memory_save` "Needs approval", because saved memories steer every future chat.
+4. Recommended tool permissions (Settings, Connectors, Vault MCP): reading tools "Always allow"; `idea_add`, `inbox_append`, `note_write` "Always allow"; `memory_save` "Needs approval", because saved memories steer every future chat. `source_keep` "Always allow" (keeps a source text once under `sources/`, never overwrites). `rule_retire` "Needs approval" (ends a rule, only after you said so). `index_write` "Needs approval" (rewrites your whole `MEMORY.md` index, rarely needed).
 
 **8.2 Desktop, iPhone, iPad and Claude Code**
 
