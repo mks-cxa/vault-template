@@ -1,0 +1,2 @@
+# Several devices and tools write notes; a conflict in a Markdown file keeps both sides.
+*.md merge=union
